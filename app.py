@@ -13,6 +13,10 @@ from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger')
+nltk.download('wordnet')
+
 from PIL import Image
 from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator # Libaray for Word Visualization
 
