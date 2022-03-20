@@ -19,13 +19,6 @@ from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator # Libaray for Wo
 import os
 import time
 
-filepath = "static/cloud.png"
-
-if os.path.exists(filepath):
-    os.remove(filepath)
-else:
-    pass
-
 
 # Preprocessing functions of Text Data
 
