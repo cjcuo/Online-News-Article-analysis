@@ -73,7 +73,7 @@ def predict():
         article.download()
         article.parse()
         if article.text != "":
-            print(url,"success")
+            #print(url,"success")
             article = article.text
     else:
         article = request.form['newstext']
