@@ -1,5 +1,1 @@
-wordnet
-pros_cons
-reuters
-averaged_perceptron_tagger
-punkt
+all
