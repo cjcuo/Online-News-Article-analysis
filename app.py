@@ -67,20 +67,15 @@ def predict():
     except:
         link = np.nan
 
-    print(link)
-
     if link is not np.nan:
         url = formaturl(link)
         article = Article(url)
         article.download()
         article.parse()
         if article.text != "":
-            print(url,"success")
             article = article.text
     else:
         article = request.form['newstext']
-
-    print(article)
 
     # split into words
     tokens = word_tokenize(article)
