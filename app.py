@@ -69,8 +69,6 @@ def predict():
 
     print(link)
 
-    time.sleep(2)
-
     if link is not np.nan:
         url = formaturl(link)
         article = Article(url)
@@ -83,7 +81,6 @@ def predict():
         article = request.form['newstext']
 
     print(article)
-    time.sleep(3)
 
     # split into words
     tokens = word_tokenize(article)
