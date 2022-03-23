@@ -19,20 +19,11 @@ from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator # Libaray for Wo
 import os
 import time
 
-filepath = "static/cloud.png"
-
-if os.path.exists(filepath):
-    os.remove(filepath)
-else:
-    pass
-
 
 # Preprocessing functions of Text Data
 
 stop_words = set(stopwords.words('english')) # Stopwords function
 wn = WordNetLemmatizer()        # lemmatization
-
-wc = WordCloud() #background_color="white"
 
 
 from flask import Flask, request, jsonify, render_template
@@ -101,15 +92,6 @@ def predict():
     probs = model.predict_proba(article_tfidf)
     predclass = np.where(model.predict(article_tfidf) == 0, 'FAKE', 'REAL')
     predprob = (probs[0].max())*100
-
-    # Generate a word cloud image
-    stopwords = set(STOPWORDS)
-    mask = np.array(Image.open("static/mask.png"))
-    wordcloud = WordCloud(stopwords=stopwords,background_color='white', max_words=1000, mask=mask,contour_color='#023075',contour_width=3,colormap='rainbow').generate("".join(impwords))
-    # create image as cloud
-    plt.imshow(wordcloud, interpolation="bilinear")
-    # store to file
-    plt.savefig("static/cloud.png", format="png")
     
     return render_template('frontpage.html', urlgiven = link, articletext = article, pclass = predclass, pprob = round(predprob,2))
 
